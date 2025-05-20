@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../../../layouts/Layout.astro'
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog')
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}))
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<Layout ogImage={`/blog/${post.slug}/og.png`}>
+	<div class="mx-auto max-w-3xl px-4 py-10">
+		<a
+			href="/"
+			class="mb-6 inline-flex items-center text-white/70 transition hover:text-white"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="mr-1 h-5 w-5"
+				viewBox="0 0 20 20"
+				fill="currentColor"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+					clip-rule="evenodd"></path>
+			</svg>
+			Back to all posts
+		</a>
+
+		<article>
+			<header class="mb-8">
+				<h1 class="mb-2 text-4xl font-bold">{post.data.title}</h1>
+				<p class="mb-4 text-white/70">
+					{
+						new Date(post.data.pubDate).toLocaleDateString('en-US', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})
+					}
+				</p>
+
+				{
+					post.data.heroImage && (
+						<img
+							src={post.data.heroImage}
+							alt={post.data.title}
+							class="h-64 w-full rounded-xl object-cover"
+						/>
+					)
+				}
+			</header>
+
+			<div class="prose prose-invert max-w-none">
+				<Content />
+			</div>
+
+			{
+				post.data.tags.length > 0 && (
+					<div class="mt-8 flex flex-wrap gap-2">
+						{post.data.tags.map((tag: string) => (
+							<span class="rounded-full bg-white/10 px-3 py-1 text-sm text-white/80">
+								{tag}
+							</span>
+						))}
+					</div>
+				)
+			}
+		</article>
+	</div>
+</Layout>
