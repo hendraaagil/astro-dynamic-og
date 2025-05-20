@@ -1,5 +1,13 @@
 ---
 import '../styles/global.css'
+import background from '../assets/background.svg'
+
+export interface Props {
+	ogImage?: string
+}
+
+const ogImage = Astro.props.ogImage ?? '/og.png'
+const socialImageURL = new URL(ogImage, Astro.url)
 ---
 
 <!doctype html>
@@ -11,8 +19,15 @@ import '../styles/global.css'
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content="Astro dynamic OG image generator demo." />
 		<title>Astro Dynamic OG Image Generator</title>
+		<meta property="og:image" content={socialImageURL} />
 	</head>
-	<body>
+	<body class="bg-slate-900 text-slate-50">
+		<img
+			class="fixed top-0 left-0 -z-10 h-full w-full blur-[100px]"
+			src={background.src}
+			alt="Background"
+			fetchpriority="high"
+		/>
 		<slot />
 	</body>
 </html>
