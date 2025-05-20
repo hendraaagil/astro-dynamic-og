@@ -10,7 +10,7 @@ export default async (title?: string) =>
 					display: 'flex',
 					width: '100%',
 					height: '100%',
-					backgroundColor: '#2A61CC',
+					backgroundColor: '#0f172b',
 				},
 				children: {
 					type: 'div',
@@ -21,7 +21,7 @@ export default async (title?: string) =>
 							height: '100%',
 							padding: '36px 96px',
 							backgroundImage:
-								'linear-gradient(130deg, #0F172A 10%, rgba(15, 23, 42, 0.85) 50%, rgba(15, 23, 42, 0.65) 75%, #2A61CC 150%)',
+								'linear-gradient(130deg, #3245ff 10%, rgba(188, 82, 238, 0.65) 50%, #ff4d32 150%)',
 							color: '#F8FAFC',
 							justifyContent: 'center',
 							alignItems: 'center',

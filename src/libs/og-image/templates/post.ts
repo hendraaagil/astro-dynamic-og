@@ -21,7 +21,7 @@ export default async (title: string, image: string) =>
 							height: '100%',
 							padding: '36px 72px',
 							backgroundImage:
-								'linear-gradient(130deg, #0F172A 10%, rgba(15, 23, 42, 0.85) 50%, rgba(15, 23, 42, 0.65) 75%, rgba(15, 23, 42, 0.5) 150%)',
+								'linear-gradient(130deg, #3245ff 10%, rgba(188, 82, 238, 0.65) 50%, #ff4d32 150%)',
 							color: '#F8FAFC',
 							display: 'flex',
 							flexDirection: 'column',
