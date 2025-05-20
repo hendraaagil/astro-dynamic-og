@@ -1,16 +1,9 @@
 ---
 import astroLogo from '../assets/astro.svg'
-import background from '../assets/background.svg'
 ---
 
 <div class="h-full font-sans">
-	<img
-		class="fixed top-0 left-0 -z-10 h-full w-full blur-[100px]"
-		src={background.src}
-		alt=""
-		fetchpriority="high"
-	/>
-	<main class="flex min-h-screen justify-center">
+	<main class="flex justify-center py-6">
 		<section class="flex flex-col items-start justify-center space-y-6 p-4">
 			<a href="https://astro.build">
 				<img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" />
